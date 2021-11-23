@@ -21,6 +21,11 @@
     <link rel="stylesheet" href="assets/css/slick.css">
     <link rel="stylesheet" href="assets/css/nice-select.css">
     <link rel="stylesheet" href="assets/css/style.css">
+
+       <!-- Axios -->
+       <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+       
 </head>
 <body>
 <!-- Preloader Start -->
@@ -56,13 +61,13 @@
                                     <li><a href="about.html">About</a></li>
                                     <li><a href="gallery.html">gallery</a></li>
                                     <li><a href="booking.html">Guestbook</a></li>
-                                    <li><a href="blog.html">Blog</a>
+                                    <!-- <li><a href="blog.html">Blog</a>
                                         <ul class="submenu">
                                             <li><a href="blog.html">Blog</a></li>
                                             <li><a href="single-blog.html">Blog Details</a></li>
                                             <li><a href="elements.html">Element</a></li>
                                         </ul>
-                                    </li>
+                                    </li> -->
                                     <li><a href="contact.html">Contact Us</a></li>
                                 </ul>
                             </nav>
@@ -97,51 +102,15 @@
     <section class="contact-section">
             <div class="container">
                 <div class="d-none d-sm-block mb-5 pb-4">
-                    <div id="map" style="height: 480px; position: relative; overflow: hidden;"></div>
-                    <script>
-                        function initMap() {
-                            var uluru = {
-                                lat: -25.363,
-                                lng: 131.044
-                            };
-                            var grayStyles = [{
-                                    featureType: "all",
-                                    stylers: [{
-                                            saturation: -90
-                                        },
-                                        {
-                                            lightness: 50
-                                        }
-                                    ]
-                                },
-                                {
-                                    elementType: 'labels.text.fill',
-                                    stylers: [{
-                                        color: '#ccdee9'
-                                    }]
-                                }
-                            ];
-                            var map = new google.maps.Map(document.getElementById('map'), {
-                                center: {
-                                    lat: -31.197,
-                                    lng: 150.744
-                                },
-                                zoom: 9,
-                                styles: grayStyles,
-                                scrollwheel: false
-                            });
-                        }
-                    </script>
-                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpfS1oRGreGSBU5HHjMmQ3o5NLw7VdJ6I&amp;callback=initMap">
-                    </script>
-    
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15628.157037393741!2d79.2921802!3d11.6916302!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4235625fc39ee8e!2sSathya%20the%20Professional%20studio!5e0!3m2!1sen!2sin!4v1637590301058!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                   
                 </div>
                 <div class="row">
                     <div class="col-12">
                         <h2 class="contact-title">Get in Touch</h2>
                     </div>
                     <div class="col-lg-8">
-                        <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                        <div class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
@@ -165,22 +134,22 @@
                                 </div>
                             </div>
                             <div class="form-group mt-3">
-                                <button type="submit" class="button button-contactForm boxed-btn">Send</button>
+                                <button id="contact" class="button button-contactForm boxed-btn">Send</button>
                             </div>
-                        </form>
+                        </div>
                     </div>
                     <div class="col-lg-3 offset-lg-1">
                         <div class="media contact-info">
                             <span class="contact-info__icon"><i class="ti-home"></i></span>
                             <div class="media-body">
-                                <h3>Buttonwood, California.</h3>
-                                <p>Rosemead, CA 91770</p>
+                                <h3>Address</h3>
+                                <p>RANADIVE E, 26, Ganesanar St, opposite to Bank of India, Menachipuram, Ulundurpet, Tamil Nadu 606107</p>
                             </div>
                         </div>
                         <div class="media contact-info">
                             <span class="contact-info__icon"><i class="ti-tablet"></i></span>
                             <div class="media-body">
-                                <h3>+1 253 565 2365</h3>
+                                <h3>+91 9626666685</h3>
                                 <p>Mon to Fri 9am to 6pm</p>
                             </div>
                         </div>
@@ -277,6 +246,9 @@
     <!-- Footer End-->
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+crossorigin="anonymous"></script>
     <!-- JS here -->
 
     <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
@@ -311,6 +283,26 @@
     <!-- Jquery Plugins, main Jquery -->	
     <script src="./assets/js/plugins.js"></script>
     <script src="./assets/js/main.js"></script>
-    
+    <script src="./sathiyabot.js"></script>
+
+    <script>
+           
+        var send = document.getElementById('contact');
+                     
+             send.addEventListener('click',()=>{
+                 // console.log(name);
+                 // console.log(phone);
+                 // console.log(email);
+                 // console.log(msg);
+                 var name = document.getElementById('name').value;
+                 var email = document.getElementById('email').value;
+                 var sub = document.getElementById('subject').value;
+                 var msg = document.getElementById('message').value;
+                
+                 contact(name, sub, email, msg);
+         
+          }
+         );
+    </script>
 </body>
 </html>
